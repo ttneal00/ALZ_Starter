@@ -16,7 +16,7 @@ stages:
     steps:
     - checkout: self
     - script: |
-        ls -la $(Build.SourcesDirectory)/enterprise_scale
+        ls -la $(Build.SourcesDirectory)/enterprise_scale/construction_sets
       displayName: 'List contents of the source directory'
 
     - task: TerraformInstaller@1
