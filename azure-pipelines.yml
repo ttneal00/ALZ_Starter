@@ -23,6 +23,6 @@ stages:
       inputs:
         tfsecversion: '0.58.6'
     - script: |
-        /usr/local/bin/tfsec $(Build.SourcesDirectory)/Terraform
+        tfsec $(Build.SourcesDirectory)/Terraform
       displayName: 'Run tfsec scan'
 
