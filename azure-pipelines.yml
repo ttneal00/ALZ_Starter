@@ -16,7 +16,7 @@ stages:
     steps:
     - checkout: self
     - script: |
-        ls -la $(Build.SourcesDirectory)
+        ls -la $(Build.SourcesDirectory)/configuration
       displayName: 'List contents of the source directory'
 
     - task: TerraformInstaller@1
@@ -27,6 +27,6 @@ stages:
       inputs:
         tfsecversion: '0.58.6'
     - script: |
-        tfsec $(Build.SourcesDirectory)/Terraform
+        tfsec $(Build.SourcesDirectory)
       displayName: 'Run tfsec scan'
 
