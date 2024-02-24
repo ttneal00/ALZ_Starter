@@ -23,10 +23,13 @@ stages:
       displayName: 'Install Terraform'
       inputs:
         terraformVersion: '1.1.0'  # Specify the version you need
+    - script: |
+        terraform init
+      displayName: 'Initialize Terraform'
+
     - task: terraformstaticcodeanalyzer@1
       inputs:
         tfsecversion: '0.58.6'
     - script: |
         tfsec $(Build.SourcesDirectory)
       displayName: 'Run tfsec scan'
-
