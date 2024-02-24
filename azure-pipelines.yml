@@ -1,5 +1,5 @@
 trigger:
-- starter
+- main
 
 variables:
   - group: iac-secure-caf
