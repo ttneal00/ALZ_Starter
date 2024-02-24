@@ -1,0 +1,28 @@
+trigger:
+- main
+
+variables:
+  devenvironment: 'development'
+  tstenvironment: 'test'
+  prodenvironment: 'production'
+
+stages:
+- stage: Build
+  displayName: 'Build Stage'
+  jobs:
+  - job: BuildJob
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - checkout: self
+    - task: TerraformInstaller@1
+      displayName: 'Install Terraform'
+      inputs:
+        terraformVersion: '1.1.0'  # Specify the version you need
+    - task: terraformstaticcodeanalyzer@1
+      inputs:
+        tfsecversion: '0.58.6'
+    - script: |
+        /usr/local/bin/tfsec $(Build.SourcesDirectory)/Terraform
+      displayName: 'Run tfsec scan'
+
